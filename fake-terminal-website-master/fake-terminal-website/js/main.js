@@ -219,7 +219,7 @@ var main = (function () {
             Terminal.makeElementDisappear(element);
             element.onclick = function (file, event) {
                 this.handleSidenav(event);
-                this.cmdLine.value = "cat " + file + " ";
+                this.cmdLine.value = "treasure " + file + " ";
                 this.handleCmd();
             }.bind(this, file);
             element.appendChild(document.createTextNode(capFirst(file.replace(/\.[^/.]+$/, "").replace(/_/g, " "))));
