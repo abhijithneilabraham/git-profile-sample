@@ -12,9 +12,9 @@ var configs = (function () {
         }
     };
     Singleton.defaultOptions = {
-        general_help: "Below there's a list of commands that you can use.\nYou can use autofill by pressing the TAB key, autocompleting if there's only 1 possibility, or showing you a list of possibilities.",
-        ls_help: "List information about the files and folders (the current directory by default).",
-        cat_help: "Read FILE(s) content and print it to the standard output (screen).",
+        general_help: "You are granted 6 wishes. You can choose one of them",
+        ls_help: "Show the treasures I have kept open for you.",
+        cat_help: "Open the treasures.Enter 'treasure [filename]' ",
         whoami_help: "Print the user name associated with the current effective user ID and more info.",
         date_help: "Print the system date and time.",
         help_help: "Print this menu.",
@@ -119,8 +119,8 @@ var main = (function () {
     InvalidArgumentException.prototype.constructor = InvalidArgumentException;
 
     var cmds = {
-        LS: { value: "ls", help: configs.getInstance().ls_help },
-        CAT: { value: "cat", help: configs.getInstance().cat_help },
+        LS: { value: "show", help: configs.getInstance().ls_help },
+        CAT: { value: "treasure", help: configs.getInstance().cat_help },
         WHOAMI: { value: "whoami", help: configs.getInstance().whoami_help },
         DATE: { value: "date", help: configs.getInstance().date_help },
         HELP: { value: "help", help: configs.getInstance().help_help },
