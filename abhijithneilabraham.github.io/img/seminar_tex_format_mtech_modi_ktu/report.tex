@@ -1,0 +1,358 @@
+%\documentclass[a4paper,11pt]{book}
+\documentclass[a4paper,12pt,oneside]{report}%book}
+%\input{setbmp}
+\usepackage{epsfig}
+\usepackage{longtable}
+\usepackage{enumerate}
+%\usepackage{caption2}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath, amsfonts}
+\usepackage[left=3.5cm,top=1.5cm,right=3cm,bottom=4cm]{geometry}
+\usepackage{setspace}           %%%%%%%%%%THIS IS for BOOK size
+%\usepackage{lscape}
+
+%\usepackage{parskip}
+  \hyphenpenalty=5000
+  \tolerance=1000
+%\oddsidemargin 1.48cm
+%\evensidemargin .5cm
+%\textwidth 17cm
+% Graphics files are in the figures/ directory
+%\graphicspath{{figures/}}
+
+\usepackage{lscape} % for landscape tables
+%\usepackage{appendix}
+\usepackage{cite}
+\renewcommand{\baselinestretch}{1.7} %%%%%%% JSS added for line spaceing
+%\input{style}   %************************ i have removed jss
+
+%\pagestyle{bfheadings}
+\begin{document}
+
+\thispagestyle{empty}
+
+\oddsidemargin 1.48cm
+\evensidemargin .5cm
+\begin{center}
+
+{\Large \bf OPTIMIZATION OF  DISTRIBUTION SYSTEMS \\}
+
+\vspace*{0.75cm}
+{\large \textbf A Seminar Report}\\
+
+Submitted by
+
+\vspace*{.25cm}
+
+{\bf ARUN K.S.}\\
+{\bf Roll No. 41140101}
+\vspace*{0.75cm}
+
+{\bf to}\\
+{\normalsize he APJ Abdul Kalam Technological University
+in partial fulfillment of the requirements for the award of  the Degree }
+%{\normalsize \it Registration Seminar Report}
+
+{of}\\
+\vspace*{1cm}
+
+{\bf B.Tech.}\\
+\vspace*{1.5mm}
+in\\
+\vspace*{1.5mm}
+{\bf Electrical and Electronics Engineering}\\
+\vspace*{.75cm}
+
+
+
+%{\bf Prof: D. Das}
+
+%\vspace*{1cm}
+
+
+\begin{figure}[hbt]
+%\centerbmp{1.2in}{1.4in}{iitlogo.bmp}
+\centering
+\centerline{\includegraphics[scale=0.6]{cet_emblem.eps}}
+\end{figure}
+
+\vspace*{0.75cm}
+
+
+{\footnotesize DEPARTMENT OF ELECTRICAL ENGINEERING}\\
+{\small \bf COLLEGE OF ENGINEERING TRIVANDRUM}\\
+{\small \bf KERALA\\
+MAY 2017}
+\end{center}
+%\newpage
+%\input{dedicate}
+        %\newpage
+       %\input{preface}
+\newpage
+\pagenumbering{roman}
+%\chapter*{Certificate}
+%\addcontentsline{toc}{chapter}{Certificate}
+\thispagestyle{empty}
+
+\vspace*{-0.3cm}
+\begin{center}  {\large \bf  DEPARTMENT OF ELECTRICAL ENGINEERING}\end{center}
+\begin{center}  {\large \bf COLLEGE OF ENGINEERING TRIVANDRUM}\end{center}
+\begin{center}  {\large \bf THIRUVANANTHAPURAM - 695016}\vspace{0.1cm}\end{center}
+
+\begin{figure}[hbt]
+%\centerbmp{1.2in}{1.4in}{iitlogo.bmp}
+\centering
+\centerline{\includegraphics[scale=0.6]{cet_emblem.eps}}
+\end{figure}
+
+\begin{center}  {\large \bf  {CERTIFICATE}}\vspace{.1cm}\end{center}
+
+This  is  to  certify  that  the report entitled {\large \bf  {Optimization of Distribution Systems}} submitted  by \textbf{Arun J.S.} to the APJ Abdul Kalam Technological University in partial fulfillment of the requirements  for  the  award  of  the  Degree  of  Bachelor  of  Technology  in Electrical and Electronics Engineering is a bonafide record of the Seminar carried out by him/her our guidance  and  supervision. This  report in  any  form    has  not  been  submitted  to  any
+other University or Institute for any purpose.
+
+
+\begin{singlespace}
+\begin{center}
+\begin{tabular}{ p{6cm} p{2cm} p{6cm} }
+ %\hline
+ \textbf{Prof. Asok} && \textbf{Dr. Arya} \\
+ Assoc. Professor& &Assoc. Professor\\
+ Dept. of Electrical Engg. && Dept. of Electrical Engg.\\
+College of Engineering & &College of Engineering\\
+Trivandrum && Trivandrum\\
+\end{tabular}
+\end{center}
+
+\vspace*{.50cm}
+\begin{center}
+\begin{tabular}{ p{6cm} p{2cm} p{6cm} }
+ %\hline
+ \textbf{Dr. M. Waheeda Beevi} && \textbf{Dr. S. Ushakumari} \\
+ PG Coordinator& &Professor and Head\\
+ Dept. of Electrical Engg. && Dept. of Electrical Engg.\\
+College of Engineering & &College of Engineering\\
+Trivandrum && Trivandrum\\
+\end{tabular}
+\end{center}
+\end{singlespace}
+\newpage
+%\input{acknow}
+%\newpage
+%\input{abstract}
+%\addcontentsline{toc}{chapter}{Certificate}
+\thispagestyle{empty}
+
+%%%%\vspace*{1cm}
+\begin{center}  {\Large \bf Abstract}\end{center}
+%%\begin{abstract}\vspace{1cm}
+\noindent In the recent years, there is an increased interest for research in the field of electrical power distribution systems. This is mainly, due to the facts that a major portion of the investment in the design of electrical power system is utilized for the distribution system and that a major share of the total losses in a power system occurs in the distribution system, as the voltage levels are low.
+\par
+The topics presented are study are load flow, optimal capacitor location and placement, network reconfiguration.
+
+ \newpage
+\tableofcontents 	\cleardoublepage%\newpage
+%\addcontentsline{toc}{chapter}{List of Figures}
+%\listoffigures 	\cleardoublepage %\newpage
+%
+%\addcontentsline{toc}{chapter}{List of Tables}
+%\listoftables 	\cleardoublepage%\newpage
+%\input{los1} \newpage
+%\input{losjss} \newpage   %%%LIST OF SYMBOLS
+\pagenumbering{arabic}
+
+%*************************************************************************************************
+\chapter{Introduction}
+\label{chapintro}
+\section{Background}
+Electricity is modern society's most convenient and useful form of energy. Without it, the present social infrastructure would not at all be feasible. The increasing per capita consumption of electricity throughout the world reflects growing standard of living of the people. The optimum utilization of this form of energy can be ensured by an effective distribution system.
+\par
+Distribution systems can be generally categorized into two subdivisions - primary distribution systems and secondary distribution systems. Primary distribution system carries load at higher than utilization voltages from the substation (or other source) to the point where the voltage to be stepped down to the value at which the energy is utilized by the consumer. Secondary distribution is the part of the system operating at utilization voltages up to the meter in the consumer's premises. Primary distribution systems include the two following basic types - radial distribution systems and looped distribution systems (open/closed loops).
+
+Therefore, mathematical models are developed to represent the system and can be employed by distribution system planners to investigate and determine optimum expansion patterns or alternatives, for example, by selecting:
+\begin{itemize}
+\item Optimum substation locations
+\item Optimum substation expansion
+\item Optimum substation transformer sizes
+\end{itemize}
+
+\section{Literature Survey}
+\label{litersurvey}
+
+In the past, efforts of power engineers were concentrated on the generation and transmission levels; the distribution system received less focus. It is only recently that the engineers have been equipped with the facilities to cope up with the computational burden of the distribution system in performing accurate modeling and simulation. As society became more dependent upon a reliable supply of electricity, the distribution system emerged as a critical link between the utility and consumer.
+\par
+Recently researchers have paid attention in the following areas of electric power distribution system:
+\begin{itemize}
+\item Load flow of electric power distribution systems
+\item Network reconfiguration of electrical power distribution networks.
+\end{itemize}
+
+\par
+Load flow is very important and fundamental tool for analysis of any power system and is used in the operational as well as planning stages. Certain applications, particularly in the distribution automation and optimization of a power system, require repeated load flow solutions. In these applications, it is very important to solve the load flow problem as efficiently as possible. Since the invention and widespread use of computers, beginning in the 1950's and 1960's, many methods for solving the load flow problem have been developed \cite{pas:tinney}. Most of the methods have grown up around transmission systems and over the years, variations of the Newton-Raphson methods such as the fast decoupled method developed by Scott and Alsac \cite{pas:scott} have become the most widely used.
+Unfortunately, the assumptions necessary for the simplification used in the standard fast-decoupled Newton-Raphson method are not often valid in the distribution systems. In particular, the R/X ratios in distribution systems can be much higher.
+
+\section{Outline of the Report}
+
+The organization of this report is as follows. As already seen, Chapter \ref{chapintro} presents background of the work on different aspects of distribution system and presents a critical survey of the research concerning distribution system.
+\par
+Chapter \ref{chapmf} presents the definition of the problem and solution methodology. Effectiveness of the proposed method is also depicted.demonstrated through comparing the results obtained with those available in the literature.
+\par
+In Chapter \ref{chapres}, the results obtained using the proposed method is demonstrated through comparing the results obtained with those available in the literature. optimal placement of Statcom in radial distribution systems is studied.
+\par
+Chapter \ref{chapcon} brings out the significant conclusions of the entire work.
+%*************************************************************************************************
+\chapter{Mathematical Formulation}
+\label{chapmf}
+\section{Problem Definition}
+You must read the article properly and give a clear definition of your problem here.
+\par
+Load flow provides the steady state condition of a power system. In distribution systems, it involves finding the voltage at each node, given the substation voltage and loads of different consumers. Without load flow studies, it is impossible to analyze the different aspects of distribution systems such as network reconfiguration, optimal capacitor placement, loss allocation, optimal branch conductors selection, and distribution system planning.
+\par
+\section{Solution Methodology}
+\vspace{-0.1in}
+You must provide block diagrams, mathematical equations here
+
+
+\textbf{Fig.\ref{figure_9bus}} shows the single line diagram of a sample 9 node radial distribution network. The branch
+number, sending end and receiving end nodes are tabulated in \textbf{Table
+\ref{table_brnodeno}}. \textbf{Fig.\ref{figure_branch}} shows the electrical
+equivalent of branch-$jj$ of \textbf{Fig.\ref{figure_9bus}}.
+
+
+
+\begin{figure}[!h]
+\centering
+%\vspace{0.4in}
+ \includegraphics[scale=0.95]{node9.eps}
+\caption{Single line diagram of a 9 node radial distribution system}
+\label{figure_9bus}
+\end{figure}
+%\vspace{0.4in}
+
+
+%\begin{singlespacing}
+\begin{table}[!h]
+% increase table row spacing, adjust to taste
+\caption{Branch No., sending end and receiving end nodes of the
+network} \label{table_brnodeno} \centering
+\begin{tabular}{|c|c|c|}
+\hline
+ Branch No.& Sending end node & Receiving end node\\
+$(jj)$ & $m1=IS(jj)$ & $m2=IR(jj)$\\
+\hline
+1 & 1 & 2\\
+%\hline
+2 & 2 & 3\\
+%\hline
+3 & 3 & 4\\
+%\hline
+4 & 2 & 5\\
+%\hline
+5 & 5 & 6\\
+%\hline
+6 & 5 & 7\\
+%\hline
+7 & 3 & 8\\
+%\hline
+8 & 8 & 9\\
+\hline
+\end{tabular}
+\end{table}
+%\end{singlespacing}
+
+\begin{figure}[!b]
+\centering
+ \includegraphics[scale=0.7]{electeqtnew.eps}
+\caption{Electrical equivalent of branch-$jj$} \label{figure_branch}
+\end{figure}
+
+From the electrical equivalent diagram given in \textbf{Fig.\ref{figure_branch}}, the following equations can be derived.
+\vspace{0.1in}
+\begin{equation}
+I(jj)=\frac{|V(m1)|\;\angle\delta(m1)-|V(m2)|\angle\delta(m2)}{R(jj)+j\:X(jj)}
+ \label{eq_curr}
+ \end{equation}
+\vspace{-0.04in}
+\begin{equation}
+P(m2)-jQ(m2)=V^*(m2)I(jj)
+ \label{eq_pow}
+ \end{equation}
+
+%\vspace{-0.15in}
+\begin{equation}
+|V(m2)|=0.5\;[|V(m1)|+\{|V(m1)|^{2}-4(P(m2)R(jj)+Q(m2)X(jj))\}^{\;\frac{1}{2}}]
+ \label{eq_volt}
+ \end{equation}
+
+\section {Concluding  Remarks}
+
+Provide a brief concluding remarks which will connect the explainations in the present chapter to the next chapter
+
+
+%*************************************************************************************************
+\chapter{Results and Discussions}
+\label{chapres}
+%\section{Introduction}
+
+Present few introductory lines here.
+
+\section{Results}
+\label{sec:results}
+
+Details and understanding of various graphs and plots must be presented in a clear manner. Present detailed discussions about the results here
+
+\begin{enumerate}
+	\item Perform the load flow to compute the branch losses and nodes voltage.
+	\item Find the membership values of branch power loss ($\mu _{Li}$) and nodes voltage ($\mu _{Vi}$).
+	\item Obtain min($\mu _{Li}$, $\mu _{Vi})$ for $i$=1, 2, \ldots, $NB$-1 and nodes are ordered according to their values in the ascending order and top few nodes
+are selected as candidate locations for capacitor placement.
+\end{enumerate}
+
+\section {Concluding  Remarks}
+Provide a brief concluding remarks which will connect the explainations in the present chapter to the next chapter
+
+%*************************************************************************************************
+\chapter{Conclusions}
+\label{chapcon}
+%\section{Introduction}
+%Present few introductory words here
+\par
+\section{Conclusions}
+
+Give detailed conclusions here
+%*************************************************************************************************
+\appendix
+%*************************************************************************************************
+\chapter{Derivation of Receiving End Voltage}
+
+\section*{Approximate equation of receiving end voltage magnitude}
+From Fig.\ref{figure_branch}, we have the following equations
+\begin{equation}
+I(jj)=\frac{|V(m1)\;\angle\delta(m1)-|V(m2)\angle\delta(m2)}{R(jj)+j\:X(jj)}
+ \label{eq_curr1}
+ \end{equation}
+
+\begin{equation}
+I(jj)=\frac{P(m2)-jQ(m2)}{V^*(m2)}
+ \label{eq_curr2}
+ \end{equation}
+
+From Eqns.(\ref{eq_curr1}) and (\ref{eq_curr2}) we obtain,
+\begin{equation}
+\frac{|V(m1)|\;\angle\delta(m1)-|V(m2)|\angle\delta(m2)}{R(jj)+j\:X(jj)}=\frac{P(2)-jQ(2)}{V^*(2)}
+ \label{eq_equa}
+ \end{equation}
+
+%\begin{equation}
+%|V(m1)||V(m2)|\;\angle(\delta(m1)-\delta(m2))-|V(m2)|^2=(R(jj)+j\:X%(jj))(P(m2)-jQ(m2))
+% \label{eq_equa1}
+% \end{equation}
+
+
+%\begin{singlespace}
+\bibliography{references}
+\bibliographystyle{ieee}
+%\end{singlespace}
+\newpage
+\end{document}
